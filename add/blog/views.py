@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .forms import *
 
 
 def home(request):
@@ -9,8 +10,14 @@ def home(request):
 
 def page(request, id):
     post_page = Post.objects.get(id=id)
-    comments = Category.objects.get
-    return render(request, 'page.html', {"post_page": post_page})
+    form = CommentForm()
+    if request.method == 'POST':
+        form = CommentForm(data=request.POST)
+        data = form.save(commit=False)
+        data.post = post_page
+        data.save()
+
+    return render(request, 'page.html', {"post_page": post_page, 'form': form})
 
 
 def about(request):

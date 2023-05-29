@@ -14,7 +14,31 @@
     </div>
     <!-- end post -->
 
-    <br>
+
+    <!-- begin comments -->
+    <div id="comments">
+      <div id="respond">
+        <form method="post" id="commentform">
+          <p><strong>Оставить комментарий</strong></p>
+
+          <p>
+            {{ form.name }}
+            {% csrf_token %}
+          </p>
+                  <p>
+           {{ form.image }}
+          </p>
+          <p>
+            {{ form.body }}
+          </p>
+          <p>
+            <button name="submit" type="submit" id="submit">Отправить</button>
+          </p>
+        </form>
+      </div>
+    </div>
+
+
     <br>
     <br>
 

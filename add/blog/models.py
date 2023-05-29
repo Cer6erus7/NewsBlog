@@ -33,7 +33,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=100)
     body = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='avatar/%Y/%m/%d/')
+    image = models.ImageField(upload_to='avatar/%Y/%m/%d/', default="avatar/2023/05/29/115-1150821_default-avatar-comments-sign-in-icon.png")
 
     class Meta:
         verbose_name = 'Комментарий'
