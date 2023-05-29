@@ -10,7 +10,7 @@
     <div class="post">
       <div class="thumb"><a href="/page/{{i.id}}"><img src="{{ i.image.url }}" alt="" /></a></div>
       <h2><a href="/page/{{i.id}}">{{i.title}}</a></h2>
-      <p class="date">{{i.created_date}}</p>
+      <p class="date">{{i.created_date}}, {{i.category_id}}</p>
       <p>{{i.text|truncatechars:100}}</p>
       <a class="continue" href="/page/{{i.id}}">Продолжить чтение</a> </div>
     <!-- end post -->
