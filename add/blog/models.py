@@ -26,3 +26,19 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    body = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='avatar/%Y/%m/%d/')
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+        ordering = ['-created_date']
+
+    def __str__(self):
+        return f'{self.post}'

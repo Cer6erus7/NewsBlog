@@ -9,6 +9,7 @@ def home(request):
 
 def page(request, id):
     post_page = Post.objects.get(id=id)
+    comments = Category.objects.get
     return render(request, 'page.html', {"post_page": post_page})
 
 

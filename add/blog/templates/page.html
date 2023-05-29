@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
   <!-- BEGIN content -->
   <div id="content">
     <!-- begin post -->
@@ -12,6 +13,63 @@
       <p>{{post_page.text}}</p>
     </div>
     <!-- end post -->
+
+    <br>
+    <br>
+    <br>
+
+
+{% if post_page.comments.all %}
+
+<h4 class="mb-0">Недавние комментарии</h4>
+<p class="fw-light mb-4 pb-2">Раздел последних комментариев пользователей</p>
+
+{% for i in post_page.comments.all %}
+<section>
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="card text-dark">
+          <div class="card-body p-4">
+            <br>
+
+          <div class="card-body p-4">
+            <div class="d-flex flex-start">
+              <img class="rounded-circle shadow-1-strong me-3"
+                src="{{ i.image.url }}" alt="avatar" width="60"
+                height="60" />
+              <div>
+                <h6 class="fw-bold mb-1">{{ i.name }}</h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0">
+                    {{ i.created_date }}
+                  </p>
+                </div>
+                <p class="mb-0">
+                  {{ i.body }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+            <hr class="my-0" />
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</section>
+{% endfor %}
+
+    {% else %}
+<h4 class="mb-0">Недавние комментарии</h4>
+<p class="fw-light mb-4 pb-2">Раздел последних комментариев пользователей</p>
+    <br>
+    <p> Комментариев пока нет </p>
+{% endif %}
+
   </div>
   <!-- END content -->
   <!-- BEGIN sidebar -->
