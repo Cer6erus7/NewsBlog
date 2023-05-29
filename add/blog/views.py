@@ -1,12 +1,15 @@
 from django.shortcuts import render
+from .models import *
 
 
 def home(request):
-    return render(request, 'index.html')
+    post = Post.objects.all()
+    return render(request, 'index.html', {"post": post})
 
 
-def page(request):
-    return render(request, 'page.html')
+def page(request, id):
+    post_page = Post.objects.get(id=id)
+    return render(request, 'page.html', {"post_page": post_page})
 
 
 def about(request):
